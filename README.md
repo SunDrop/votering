@@ -1,4 +1,16 @@
 votering
 ========
 
-A Symfony project created on August 11, 2018, 2:07 am.
+A Symfony project.
+
+Update DB
+```
+php bin/console doctrine:schema:update --force
+```
+
+Create admin user
+```
+php bin/console fos:user:create
+php bin/console fos:user:promote
+```
+
