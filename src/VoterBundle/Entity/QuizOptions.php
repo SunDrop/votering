@@ -33,6 +33,11 @@ class QuizOptions
      */
     private $quiz;
 
+    /**
+     * @ORM\OneToMany(targetEntity="VoterBundle\Entity\QuizAnswers", mappedBy="quizOption")
+     */
+    private $quizAnswers;
+
 
     public function getId()
     {

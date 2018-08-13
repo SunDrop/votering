@@ -1,1 +1,13 @@
-Hello VoterBundle!
+Hello Voter!
+
+<p>
+<a href="{{ path('voter_quiz') }}">Quiz</a> <br />
+<a href="{{ path('admin_homepage') }}">Admin</a> <br />
+</p>
+
+{% if app.user %}
+    <a href="{{ path('fos_user_security_logout') }}">Log Out</a>
+{% else %}
+    <a href="{{ path('fos_user_security_login') }}">Log In</a>
+{% endif %}
+

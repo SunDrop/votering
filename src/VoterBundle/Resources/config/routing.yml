@@ -1,3 +1,11 @@
 voter_homepage:
     path:     /
     defaults: { _controller: VoterBundle:Default:index }
+
+voter_quiz:
+    path:     /quiz
+    defaults: { _controller: VoterBundle:Quiz:index }
+
+voter_quiz_show:
+    path:     /quiz/{id}
+    defaults: { _controller: VoterBundle:Quiz:show }

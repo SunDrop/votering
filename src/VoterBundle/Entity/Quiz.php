@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Quiz
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="VoterBundle\Repository\QuizRepository")
  * @ORM\Table(name="quiz")
  */
 class Quiz
@@ -38,7 +38,7 @@ class Quiz
      *
      * @ORM\Column(name="type", type="string",
      *      nullable=false,
-     *      columnDefinition="ENUM('radio', 'checkbox') NOT NULL DEFAULT 'radioW'",
+     *      columnDefinition="ENUM('radio', 'checkbox') NOT NULL DEFAULT 'radio'",
      *      options={"default":"radio"}
      * )
      */
