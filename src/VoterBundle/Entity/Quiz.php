@@ -12,10 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="VoterBundle\Repository\QuizRepository")
  * @ORM\Table(name="quiz")
  */
-class Quiz
-{
+class Quiz {
+
     const TYPE_RADIO = 'radio';
     const TYPE_CHECKBOX = 'checkbox';
+
+    const IS_ACTIVE = 1;
 
     /**
      * @var int
@@ -45,21 +47,26 @@ class Quiz
     private $type;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean", nullable=false, options={"default":true})
+     */
+    private $isActive;
+
+    /**
      * @ORM\OneToMany(targetEntity="VoterBundle\Entity\QuizOptions", mappedBy="quiz")
      */
     private $quizOptions;
 
 
-    public function __construct()
-    {
-        $this->quizOptions = new ArrayCollection();
+    public function __construct() {
+        $this->quizOptions = new ArrayCollection;
     }
 
     /**
      * @return Collection|QuizOptions[]
      */
-    public function getQuizOptions() : Collection
-    {
+    public function getQuizOptions(): Collection {
         return $this->quizOptions;
     }
 
@@ -68,8 +75,7 @@ class Quiz
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -80,8 +86,7 @@ class Quiz
      *
      * @return Quiz
      */
-    public function setQuestion($question)
-    {
+    public function setQuestion($question) {
         $this->question = $question;
 
         return $this;
@@ -92,8 +97,7 @@ class Quiz
      *
      * @return string
      */
-    public function getQuestion()
-    {
+    public function getQuestion() {
         return $this->question;
     }
 
@@ -104,8 +108,7 @@ class Quiz
      *
      * @return Quiz
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         if (!in_array($type, [self::TYPE_CHECKBOX, self::TYPE_RADIO], true)) {
             throw new \InvalidArgumentException("Invalid type");
         }
@@ -119,9 +122,27 @@ class Quiz
      *
      * @return string
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
+
+    /**
+     * @return bool
+     */
+    public function getIsActive(): bool {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     *
+     * @return Quiz
+     */
+    public function setIsActive(bool $isActive) : self {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
 }
 

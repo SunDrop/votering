@@ -1,7 +1,11 @@
 {% for quiz in quizes %}
     <p>
+    {% if quiz.isActive %}
         <a href="{{ path('admin_quiz_edit', {'id': quiz.id }) }}">{{ quiz.question }}</a>
         <br />
-
+        <a href="{{ path('admin_quiz_delete', {'id': quiz.id }) }}">Delete</a>
+    {% else %}
+        {{ quiz.question }} - DELETED
+    {% endif %}
     </p>
 {% endfor %}

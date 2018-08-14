@@ -29,6 +29,7 @@ class QuizRepository extends \Doctrine\ORM\EntityRepository {
         $qb->select('quiz')->from('VoterBundle:Quiz', 'quiz')
             ->where($qb->expr()->notIn('quiz.id',
                 $this->getAnsweredQuery()->getDQL()))
+            ->andWhere('quiz.isActive = ' . Quiz::IS_ACTIVE)
             ->setParameter('user', $user);
 
         return $qb->getQuery()->execute();
@@ -38,6 +39,7 @@ class QuizRepository extends \Doctrine\ORM\EntityRepository {
         return $this->createQueryBuilder('q')
             ->join('q.quizOptions', 'qo')
             ->leftJoin('qo.quizAnswers', 'qa')
+            ->andWhere('quiz.isActive = ' . Quiz::IS_ACTIVE)
             ->andWhere('qa.user = :user')
             ->groupBy('q.id');
     }

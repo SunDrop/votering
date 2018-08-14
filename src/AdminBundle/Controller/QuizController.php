@@ -48,8 +48,12 @@ class QuizController extends Controller {
     }
 
     public function deleteAction(Quiz $quiz) {
-        var_dump($quiz->getId());
-        exit;
+        $quiz->setIsActive(false);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($quiz);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_quiz_list');
     }
 
 }
