@@ -34,6 +34,7 @@ class QuizController extends Controller
     }
 
     public function voteAction(Request $request, UserInterface $user, Quiz $quiz) {
+        //TODO: add checkbox form handling
         $quizAnswers = new QuizAnswers;
         $quizAnswers->setUser($user);
         $form = $this->buildAnsweredForm($quizAnswers, $quiz);
