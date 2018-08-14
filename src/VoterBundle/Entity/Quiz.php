@@ -60,6 +60,7 @@ class Quiz {
 
 
     public function __construct() {
+        $this->isActive = self::IS_ACTIVE;
         $this->quizOptions = new ArrayCollection;
     }
 
