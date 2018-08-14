@@ -30,14 +30,22 @@ class QuizAnswers
 
     /**
      * @ORM\ManyToOne(targetEntity="VoterBundle\Entity\User", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="VoterBundle\Entity\QuizOptions", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $quizOption;
 
+    /**
+     * QuizAnswers constructor.
+     */
+    public function __construct() {
+        $this->dateAt = new \DateTime;
+    }
 
     /**
      * Get id

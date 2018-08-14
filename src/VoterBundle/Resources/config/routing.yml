@@ -9,3 +9,7 @@ voter_quiz:
 voter_quiz_show:
     path:     /quiz/{id}
     defaults: { _controller: VoterBundle:Quiz:show }
+
+voter_quiz_vote:
+    path:     /quiz/vote/{id}
+    defaults: { _controller: VoterBundle:Quiz:vote }
